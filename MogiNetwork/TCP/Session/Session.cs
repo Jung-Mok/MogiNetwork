@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 namespace MogiNetwork.TCP
 {
     public class cSession
+        : cSocket 
     {
+        public cSession()
+        {
+
+        }
     }
 }

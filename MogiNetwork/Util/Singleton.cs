@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MogiNetwork.Util
 {
-    public class iSingleton<T>
+    public class iSingleton<T> where T : new()
     {
-        private static readonly Lazy<iSingleton<T>> lazy = new Lazy<iSingleton<T>>(() => new iSingleton<T>());
+        private static readonly Lazy<T> lazy = new Lazy<T>(() => new T());
 
-        public static iSingleton<T> Instance { get { return lazy.Value; } }
+        public static T Instance { get { return lazy.Value; } }
 
         protected iSingleton()
         {

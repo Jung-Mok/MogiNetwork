@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33801.447
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MogiNetwork", "MogiNetwork\MogiNetwork.csproj", "{9DC31EEB-97C5-4C3B-9D92-7ABF81C5484A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestServer", "TestServer\TestServer.csproj", "{994EAB66-08CD-4578-B709-7E7B799149E5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9DC31EEB-97C5-4C3B-9D92-7ABF81C5484A} = {9DC31EEB-97C5-4C3B-9D92-7ABF81C5484A}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{9DC31EEB-97C5-4C3B-9D92-7ABF81C5484A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DC31EEB-97C5-4C3B-9D92-7ABF81C5484A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DC31EEB-97C5-4C3B-9D92-7ABF81C5484A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{994EAB66-08CD-4578-B709-7E7B799149E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{994EAB66-08CD-4578-B709-7E7B799149E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{994EAB66-08CD-4578-B709-7E7B799149E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{994EAB66-08CD-4578-B709-7E7B799149E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

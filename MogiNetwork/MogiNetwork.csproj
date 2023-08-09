@@ -41,20 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TCP\Session\Accepter.cs" />
-    <Compile Include="TCP\Session\Binder.cs" />
-    <Compile Include="TCP\Session\Connecter.cs" />
-    <Compile Include="TCP\Session\ConnecterInterface.cs" />
-    <Compile Include="TCP\Session\Disconnecter.cs" />
-    <Compile Include="TCP\Session\Listener.cs" />
-    <Compile Include="TCP\Session\Receiver.cs" />
+    <Compile Include="Packet\Packet.cs" />
+    <Compile Include="Service\ServiceInterface.cs" />
     <Compile Include="TCP\Client\Client.cs" />
-    <Compile Include="TCP\Session\Sender.cs" />
+    <Compile Include="TCP\Event\TcpEventInterface.cs" />
     <Compile Include="TCP\Server\Server.cs" />
     <Compile Include="Service\Service.cs" />
     <Compile Include="TCP\Session\Session.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TCP\Session\Socket.cs" />
+    <Compile Include="TCP\TcpInterface.cs" />
+    <Compile Include="Util\Atomic.cs" />
     <Compile Include="Util\Singleton.cs" />
   </ItemGroup>
   <ItemGroup />

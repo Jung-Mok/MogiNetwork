@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MogiNetwork.TCP.Service
+namespace MogiNetwork
 {
-    public class cReceiver
+    public class Packet
     {
     }
 }

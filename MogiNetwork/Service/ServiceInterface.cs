@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MogiNetwork.TCP.TCP
+namespace MogiNetwork
 {
-    public class cBinder
+    public interface iService
     {
+        void OnInitialize();
+        void OnRelease();
     }
 }

@@ -10,20 +10,27 @@ namespace MogiNetwork.TCP
 {
     public class cSocket
     {
-        public Socket socket { get { return this.socket; } private set { this.socket = value; } }
+        public cSocket()
+        {
+
+        }
+
+        private Socket _socket = null;
+
+        public Socket Socket { get { return _socket; } set { _socket = value; } }
 
         public bool CreateSocket(AddressFamily addressFamily)
         {
-            if(this.socket == null)
+            if(_socket != null)
             {
                 return false;
             }
 
-            this.socket = new Socket(addressFamily, SocketType.Stream, ProtocolType.Tcp);
+            _socket = new Socket(addressFamily, SocketType.Stream, ProtocolType.Tcp);
 
-            if(this.socket == null)
+            if(_socket == null)
             {
-                this.Close(SocketShutdown.Both);
+                Close(SocketShutdown.Both);
                 return false;
             }
             
@@ -32,14 +39,28 @@ namespace MogiNetwork.TCP
 
         public bool Close(SocketShutdown how) 
         {
-            if(this.socket == null)
+            if(_socket == null)
             {
                 return false;
             }
 
-            this.socket.Shutdown(how);
-            this.socket.Close();
-            this.socket = null;
+            _socket.Shutdown(how);
+            _socket.Close();
+            _socket = null;
+
+            return true;
+        }
+
+        public bool Bind(IPEndPoint endPoint)
+        {
+            _socket.Bind(endPoint);
+
+            return true;
+        }
+
+        public bool Listen(int backlog = 128)
+        {
+            _socket.Listen(backlog);
 
             return true;
         }

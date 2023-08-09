@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MogiNetwork.TCP.TCP
+namespace MogiNetwork.TCP
 {
-    public class cDisconnecter
+    public interface cTcpInterface<T>
     {
+
     }
 }

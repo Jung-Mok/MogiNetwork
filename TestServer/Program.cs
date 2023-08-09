@@ -11,7 +11,10 @@ namespace TestServer
 
     class TestServer: cServer<Player>
     {
-        public TestServer() { }
+        public TestServer() 
+        {
+
+        }
         #region iService
         // 재정의
         public override void OnInitialize() 

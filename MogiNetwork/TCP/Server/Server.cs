@@ -6,25 +6,29 @@ using static System.Collections.Specialized.BitVector32;
 
 namespace MogiNetwork.TCP
 {
-    public abstract class cServer<T>  where T : cSession
-        , iService
+    public class cServer<T> 
+        : iService
         , iTcpEvent<T>
-        , new()
+        where T : cSession , new()
     {
-        public cServer() { }
+        public cServer()
+        {
+        
+        }
+
         private cSocket _listenSocket = null;
 
         #region iService 재정의
         // 재정의
-        public abstract void OnInitialize();
-        public abstract void OnRelease();
+        public virtual void OnInitialize() { }
+        public virtual void OnRelease() { }
         #endregion
 
         #region iTcpEvent 재정의
         // 재정의
-        public abstract void OnConnected(T session);
-        public abstract void OnDisconnected(T session);
-        public abstract void OnReceived(T session, Packet packet);
+        public virtual void OnConnected(T session) { }
+        public virtual void OnDisconnected(T session) { }
+        public virtual void OnReceived(T session, Packet packet) { }
         #endregion
 
         #region Start
@@ -80,7 +84,7 @@ namespace MogiNetwork.TCP
             {
                 OnAcceptCompleted(null, args);
             }
-            // TODO : 나중에 exception 이 나면.. accept 개수가 줄어들것 같음..
+            // TODO : 나중에 exception 이 나면.. accept 개수가 줄어들것 같음.. atomic 만들면.. 카운팅 해야지..
             return true;
         }
 
@@ -91,9 +95,11 @@ namespace MogiNetwork.TCP
             if (args.SocketError == SocketError.Success)
             {
                 T session = new T();
+                session.Socket = args.AcceptSocket;
 
-                //session.Start(args.AcceptSocket);
-                //session.OnConnected(args.AcceptSocket.RemoteEndPoint);
+                session.OnConnected();
+
+                OnConnected(session);
             }
             else
             {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MogiNetwork
 {
-    public class cService : iSingleton<cService>
+    public class cService : cSingleton<cService>
     {
         public cService() { }
 
@@ -16,25 +16,11 @@ namespace MogiNetwork
 
         private Dictionary<uint, iService> dicService = new Dictionary<uint, iService>();
 
-        //T = cSession을 상속 받은 클래스
-        public U CreateTCPServer<T, U>() where T : cSession where U : cServer<T>, new()
+        public T CreateTCPServer<T>() where T : iService, new()
         {
-            
+            T server = new T();
 
-
-
-
-
-            U server = new U();
-
-            iService service = server as iService;
-
-            if(service == null)
-            {
-                return null;
-            }
-
-            dicService.Add(++counter, service);
+            dicService.Add(++counter, server);
 
             server.OnInitialize();
 

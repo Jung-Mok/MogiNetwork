@@ -13,5 +13,7 @@ namespace MogiNetwork.TCP
         {
 
         }
+
+        public virtual void OnConnected() { }
     }
 }

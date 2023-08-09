@@ -101,6 +101,7 @@ namespace MogiNetwork.TCP
             {
                 T session = new T();
                 session.Socket = args.AcceptSocket;
+                session.SetTcpEventInterface(this as iTcpEvent<T>);
 
                 lock (_lockSessions)
                 {

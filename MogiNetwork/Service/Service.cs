@@ -27,15 +27,15 @@ namespace MogiNetwork
             return server;
         }
 
-        public U CreateTCPClient<T, U>() where T : cSession where U : cClient<T>, new()
-        {
-            U client = new U();
+        //public U CreateTCPClient<T, U>() where T : cSession<T where U : cClient<T>, new()
+        //{
+        //    U client = new U();
 
-            dicService.Add(++counter, client);
+        //    dicService.Add(++counter, client);
 
-            client.OnInitialize();
+        //    client.OnInitialize();
 
-            return client;
-        }
+        //    return client;
+        //}
     }
 }

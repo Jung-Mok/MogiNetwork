@@ -3,9 +3,12 @@ using MogiNetwork.TCP;
 
 namespace TestServer
 {
-    class Player : cSession
+    class Player : cSession<Player>
     {
-        public Player() { }
+        public Player() 
+        {
+        
+        }
 
     }
 

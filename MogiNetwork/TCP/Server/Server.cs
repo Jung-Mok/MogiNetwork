@@ -1,5 +1,6 @@
 ﻿using MogiNetwork.TCP.Event;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using static System.Collections.Specialized.BitVector32;
@@ -9,7 +10,7 @@ namespace MogiNetwork.TCP
     public class cServer<T> 
         : iService
         , iTcpEvent<T>
-        where T : cSession , new()
+        where T : cSession<T> , new()
     {
         public cServer()
         {
@@ -17,6 +18,10 @@ namespace MogiNetwork.TCP
         }
 
         private cSocket _listenSocket = null;
+
+        long _sessionCounter = 0;
+        object _lockSessions = new object();
+        private Dictionary<long, T> _dicSessions = new Dictionary<long, T>();
 
         #region iService 재정의
         // 재정의
@@ -96,6 +101,11 @@ namespace MogiNetwork.TCP
             {
                 T session = new T();
                 session.Socket = args.AcceptSocket;
+
+                lock (_lockSessions)
+                {
+                    _dicSessions.Add(++_sessionCounter, session);
+                }
 
                 session.OnConnected();
 

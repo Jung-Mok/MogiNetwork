@@ -111,6 +111,8 @@ namespace MogiNetwork.TCP
                 session.OnConnected();
 
                 OnConnected(session);
+
+                session.RegisterReceive();
             }
             else
             {

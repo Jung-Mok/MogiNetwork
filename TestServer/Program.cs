@@ -10,6 +10,11 @@ namespace TestServer
         
         }
 
+        // 재정의
+        public override void OnConnected()
+        {
+
+        }
     }
 
     class TestServer: cServer<Player>
@@ -53,9 +58,9 @@ namespace TestServer
         {
             Console.WriteLine("hi");
 
-            TestServer server = cService.Instance.CreateTCPServer<Player, TestServer>();
+            TestServer server = cService.Instance.CreateTCPServer<TestServer>();
 
-            server.Start("localhost", 20000);
+            server.Start("127.0.0.1", 20000);
 
             while (true)
             {
